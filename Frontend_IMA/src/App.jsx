@@ -6,7 +6,7 @@ function App() {
   
   return (
     <>
-      <div className='bg-[#58687E] w-full h-screen'>
+      <div className='bg-[#39495E] w-full h-screen'>
         <Header />
         <InvoiceTable />
       </div>

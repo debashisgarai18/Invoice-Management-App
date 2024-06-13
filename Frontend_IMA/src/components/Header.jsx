@@ -8,7 +8,7 @@ const Header = () => {
             <div className="text-sm font-semibold uppercase text-white underline">The Boring Company</div>
         </div>
         <div className='h-full w-[70%] flex justify-center items-center'>
-            <div className="text-left w-full text-4xl font-semibold text-white pl-[10rem]">Invoice Management Dashboard</div>
+            <div className="text-left w-full text-5xl font-semibold text-white pl-[15rem] tracking-widest drop-shadow-xl">Invoice Manager</div>
         </div>
     </div>
   )
