@@ -248,5 +248,7 @@ with open(csv_file, mode="w", newline="") as file:
   writer.writerow(['business_code', 'cust_number', 'name_customer', 'clear_date', 'business_year', 'doc_id', 'posting_date', 'document_create_date', 'document_create_date.1', 'due_in_date', 'invoice_currency', 'document type', 'posting_id', 'total_open_amount', 'baseline_create_date', 'cust_payment_terms', 'invoice_id', 'isOpen'])
 
   for v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18 in zip(business_code, cust_number, name_customer, clear_date, business_year, doc_id, posting_date, document_create_date, document_create_date_1, due_in_date, invoice_currency, document_type, posting_id, total_open_amount, baseline_creation_date, cust_payment_terms, invoice_id, isOpen):
+    if v4 is None:
+      v4 =  'NaN'
     writer.writerow([v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18])
 
