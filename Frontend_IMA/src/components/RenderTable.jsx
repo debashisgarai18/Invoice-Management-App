@@ -1,4 +1,3 @@
-import React from "react";
 import {data} from "./data"
 
 const headers = [
@@ -29,8 +28,8 @@ const RenderTable = () => {
         </thead>
         <tbody>
           {data.map((val, idx) => (
-            <tr key={idx} className="text-center text-xl text-white">
-              <input type="checkbox" checked={val.checked} />
+            <tr key={idx} className="text-center text-lg text-white">
+              <input type="checkbox" defaultChecked="false" />
               <td className="text-center">{val.cust_name}</td>
               <td className="text-center">{val.cust_no}</td>
               <td className="text-center">{val.inv_no}</td>
