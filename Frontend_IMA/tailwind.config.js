@@ -9,6 +9,7 @@ export default {
       scrollbar: {
         'thin': 'thin',
         'rounded': 'rounded',
+        '::-webkit-scrollbar': { display: 'none' },
       },
     },
   },
