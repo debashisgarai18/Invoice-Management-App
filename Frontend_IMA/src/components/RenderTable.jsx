@@ -15,7 +15,7 @@ const RenderTable = () => {
   return (
     <div className="w-full px-7">
       <div className="w-full h-[660px]  flex flex-col">
-        <div className="border-b-2 border-b-[#283A46] w-full flex">
+        <div className="border-b-2 border-b-[#283A46] w-full flex mb-[0.5rem]">
           <div className="w-full flex pr-[1rem] gap-[9.35rem]">
             <input type="checkbox" />
             {headers.map((e, idx) => (
