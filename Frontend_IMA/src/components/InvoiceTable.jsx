@@ -3,18 +3,28 @@ import { HiPencil } from "react-icons/hi2";
 import { RiSubtractLine } from "react-icons/ri";
 import { IoSearchSharp } from "react-icons/io5";
 import RenderTable from "./RenderTable";
-const InvoiceTable = () => {
+import PropTypes from 'prop-types';
+
+const InvoiceTable = ({add, edit}) => {
+  const handleAdd = () => {
+    add();
+  }
+  const handleEdit = () => {
+    edit();
+  }
   return (
     <div className='w-[98%] h-fit m-auto'>
         <div className='text-4xl tracking-wide font-semibold pb-[1.75rem] text-white pl-[0.3rem]'>Dashboard</div>
         <div className='w-full h-fit bg-[#273D49CC] rounded-md drop-shadow-xl'>
           <div className='btn-bar w-full h-fit px-7 py-5'>
             <div className='flex flex-wrap gap-5 w-full justify-end'>
-              <button className='flex justify-center items-center gap-2 py-[6px] border-[1px] border-[#97A1A9] rounded-md text-xl text-[#97A1A9] hover:text-white hover:border-white hover:scale-105 focus:text-white focus:border-[#14AFF1] w-[7.5rem] h-fit drop-shadow-md'>
+              <button className='flex justify-center items-center gap-2 py-[6px] border-[1px] border-[#97A1A9] rounded-md text-xl text-[#97A1A9] hover:text-white hover:border-white hover:scale-105 focus:text-white focus:border-[#14AFF1] w-[7.5rem] h-fit drop-shadow-md'
+              onClick={handleAdd}>
                 <IoMdAdd/>
                 <p>Add</p>
               </button>
-              <button className='flex justify-center items-center gap-2 py-[6px] border-[1px] border-[#97A1A9] rounded-md text-xl text-[#97A1A9] hover:text-white hover:border-white hover:scale-105 focus:text-white focus:border-[#14AFF1] w-[7.5rem] h-fit drop-shadow-md'>
+              <button className='flex justify-center items-center gap-2 py-[6px] border-[1px] border-[#97A1A9] rounded-md text-xl text-[#97A1A9] hover:text-white hover:border-white hover:scale-105 focus:text-white focus:border-[#14AFF1] w-[7.5rem] h-fit drop-shadow-md'
+              onClick={handleEdit}>
                 <HiPencil/>
                 <p>Edit</p>
               </button>
@@ -36,4 +46,9 @@ const InvoiceTable = () => {
   )
 }
 
+
+InvoiceTable.propTypes = {
+  add : PropTypes.func.isRequired,
+  edit : PropTypes.func.isRequired,
+};
 export default InvoiceTable
