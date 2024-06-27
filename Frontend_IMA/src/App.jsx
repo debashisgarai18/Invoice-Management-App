@@ -20,9 +20,9 @@ function App() {
     <>
       <div className="bg-[#39495E] w-full h-screen relative">
         <Header />
-        <InvoiceTable add = {addBtn} edit={editBtn} />
+        <InvoiceTable add = {addBtn} edit = {editBtn} />
         {addState && <AddMenu add = {addBtn}/>}
-        {editState && <EditMenu/>}
+        {editState && <EditMenu edit = {editBtn}/>}
       </div>
     </>
   );
