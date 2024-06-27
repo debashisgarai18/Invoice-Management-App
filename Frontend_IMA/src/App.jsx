@@ -18,10 +18,10 @@ function App() {
   };
   return (
     <>
-      <div className="bg-[#39495E] w-full h-screen">
+      <div className="bg-[#39495E] w-full h-screen relative">
         <Header />
         <InvoiceTable add = {addBtn} edit={editBtn} />
-        {addState && <AddMenu/>}
+        {addState && <AddMenu add = {addBtn}/>}
         {editState && <EditMenu/>}
       </div>
     </>
