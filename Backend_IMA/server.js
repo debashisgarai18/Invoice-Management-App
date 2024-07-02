@@ -7,12 +7,12 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/invoices', async (req, res) => {
-    const response = imaModel.find();
+    const response = await imaModel.find();
     
     console.log(response);
     if(response){
         res.status(200).json({
-            message : "got the data"
+            data : response,
         })
     }
     else{
