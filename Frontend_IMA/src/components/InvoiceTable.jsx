@@ -5,13 +5,14 @@ import { IoSearchSharp } from "react-icons/io5";
 import RenderTable from "./RenderTable";
 import PropTypes from 'prop-types';
 
-const InvoiceTable = ({add, edit}) => {
+const InvoiceTable = ({add, edit, invoices}) => {
   const handleAdd = () => {
     add();
   }
   const handleEdit = () => {
     edit();
   }
+  console.log(invoices)
   return (
     <div className='w-[98%] h-fit m-auto'>
         <div className='text-4xl tracking-wide font-semibold pb-[1.75rem] text-white pl-[0.3rem]'>Dashboard</div>
@@ -40,7 +41,7 @@ const InvoiceTable = ({add, edit}) => {
               </div>
             </div>
           </div>
-          <RenderTable />
+          <RenderTable getinvoices = {invoices}/>
         </div>
     </div>
   )
@@ -50,5 +51,6 @@ const InvoiceTable = ({add, edit}) => {
 InvoiceTable.propTypes = {
   add : PropTypes.func.isRequired,
   edit : PropTypes.func.isRequired,
+  invoices : PropTypes.array.isRequired
 };
 export default InvoiceTable

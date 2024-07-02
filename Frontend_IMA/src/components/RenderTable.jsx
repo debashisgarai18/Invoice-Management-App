@@ -1,5 +1,6 @@
 import { data } from "./data";
 import "./scrollbar.css";
+import PropTypes from 'prop-types'
 
 const headers = [
   "customer name",
@@ -11,7 +12,7 @@ const headers = [
   "notes",
 ];
 
-const RenderTable = () => {
+const RenderTable = ({getinvoices}) => {
   return (
     <div className="w-full px-7">
       <div className="w-full h-[660px]  flex flex-col">
@@ -29,18 +30,18 @@ const RenderTable = () => {
           </div>
         </div>
         <div className="flex w-full gap-[1rem] flex-col pr-[1rem] overflow-y-auto">
-          {data.map((val, idx) => (
+          {getinvoices.map((val, idx) => (
             <div
               key={idx}
               className="text-center text-lg text-white flex flex-row w-full gap-[10rem] "
             >
               <input type="checkbox" defaultChecked={false} />
-              <div className="text-center">{val.cust_name}</div>
-              <div className="text-center">{val.cust_no}</div>
-              <div className="text-center">{val.inv_no}</div>
-              <div className="text-center">{val.inv_amnt}</div>
-              <div className="text-center">{val.due_date}</div>
-              <div className="text-center">{val.pred_date}</div>
+              <div className="text-center">{val.name_customer}</div>
+              <div className="text-center">{val.cust_number}</div>
+              <div className="text-center">{val.invoice_id}</div>
+              <div className="text-center">{val.total_open_amount}</div>
+              <div className="text-center">{val.due_in_date}</div>
+              <div className="text-center">{val.Predicted_payment_date}</div>
               <div className="max-w-[200px] overflow-hidden whitespace-nowrap text-ellipsis text-center pl-[2rem]">
                 {val.notes}
               </div>
@@ -52,4 +53,8 @@ const RenderTable = () => {
   );
 };
 
+
+RenderTable.propTypes = {
+  getinvoices : PropTypes.array.isRe
+}
 export default RenderTable;
