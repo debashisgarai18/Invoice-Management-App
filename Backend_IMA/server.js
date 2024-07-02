@@ -6,8 +6,20 @@ const imaModel = require("./Database/ima-db");
 app.use(cors());
 app.use(express.json());
 
-app.get('/invoices', (req, res) => {
-
+app.get('/invoices', async (req, res) => {
+    const response = imaModel.find();
+    
+    console.log(response);
+    if(response){
+        res.status(200).json({
+            message : "got the data"
+        })
+    }
+    else{
+        res.status(404).json({
+            message : "Could not recover data from the DB via this endpoint!!"
+        })
+    }
 })
 
 app.post('/invoices', async (req, res) => {

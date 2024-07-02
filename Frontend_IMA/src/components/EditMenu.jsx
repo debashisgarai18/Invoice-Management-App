@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import PropTypes from "prop-types";
 
 const EditMenu = ({ edit }) => {
+  const [invAmnt, setInvAmnt] = useState();
+  const [notes, setNotes] = useState();
+
   // for the close and the cancel button
   const handleClose = () => {
     edit();
   };
+
+  const resetEntries = () => {
+    setInvAmnt("");
+    setNotes("");
+  }
   return (
     <>
       <div className="absolute bg-black opacity-70 top-0 left-0 w-full h-full z-0"></div>
@@ -26,16 +34,16 @@ const EditMenu = ({ edit }) => {
               <input
                 type="text"
                 className="w-[50%] h-[2.1rem] bg-[#283A46] focus:outline-none border-[1px] border-[#356680] font-semibold text-white rounded-md px-[0.5rem] py-[0.5rem]"
-                // value={dueDate}
-                // onChange={(e) => setDueDate(e.target.value)}
+                value={invAmnt}
+                onChange={(e) => setInvAmnt(e.target.value)}
               />
             </div>
             <div className="w-full h-[75%] flex gap-[0.3rem]">
               <div className="w-[40%] text-[#97A1A9] text-xl">Notes</div>
               <textarea
                 className="w-[50%] h-full bg-[#283A46] focus:outline-none border-[1px] border-[#356680] font-semibold text-white rounded-md px-[0.5rem] py-[0.5rem] text-base leading-tight resize-none"
-                // value={notes}
-                // onChange={(e) => setNotes(e.target.value)}
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
               ></textarea>
             </div>
           </div>
@@ -49,7 +57,7 @@ const EditMenu = ({ edit }) => {
             <div className="flex gap-[1rem]">
               <button
                 className="text-xl border-[1px] hover:bg-[#14AFF1] focus:bg-[#97A1A9] focus:border-none  border-[#14AFF1] rounded-md text-white px-[0.75rem] py-[0.3rem]"
-                // onClick={handleClear}
+                onClick={resetEntries}
               >
                 Reset
               </button>
