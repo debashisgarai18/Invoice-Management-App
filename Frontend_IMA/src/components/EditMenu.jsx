@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import PropTypes from "prop-types";
 
 const EditMenu = ({ edit }) => {
-  const [invAmnt, setInvAmnt] = useState();
-  const [notes, setNotes] = useState();
+  const [invAmnt, setInvAmnt] = useState("");
+  const [notes, setNotes] = useState("");
 
   // for the close and the cancel button
   const handleClose = () => {
