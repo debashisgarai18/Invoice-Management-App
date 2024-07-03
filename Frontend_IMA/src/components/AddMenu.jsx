@@ -25,6 +25,35 @@ const AddMenu = ({ add }) => {
     setNotes("");
   };
 
+  // for the add button to add Data
+  const handleAdd = async () => {
+    if(!custName || !custNumber || !invAmnt || !invNumber || !dueDate){
+      alert("The fields cannot be empty!!");
+      return;
+    }
+    const data = {
+      customerName: custName,
+      customerNumber: custNumber,
+      invoiceNumber: invNumber,
+      invoiceAmount: invAmnt,
+      duedate: dueDate,
+    };
+
+    const res = await fetch("http://localhost:3000/invoices", {
+      method: "POST",
+      headers :{
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (res) {
+      alert("The data is uploaded successfully!!");
+    } else {
+      alert("There is some issue in uploading the data !! Try Again");
+    }
+    add();
+  };
+
   return (
     <>
       <div className="absolute bg-black opacity-70 top-0 left-0 w-full h-full z-0"></div>
@@ -119,7 +148,10 @@ const AddMenu = ({ add }) => {
               >
                 Clear
               </button>
-              <button className="text-xl border-[1px] hover:bg-[#14AFF1] focus:bg-[#97A1A9] focus:border-none  border-[#14AFF1] rounded-md text-white px-[0.75rem] py-[0.3rem]">
+              <button
+                className="text-xl border-[1px] hover:bg-[#14AFF1] focus:bg-[#97A1A9] focus:border-none  border-[#14AFF1] rounded-md text-white px-[0.75rem] py-[0.3rem]"
+                onClick={handleAdd}
+              >
                 Add
               </button>
             </div>

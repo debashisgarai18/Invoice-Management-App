@@ -23,9 +23,6 @@ function App() {
   const getInvoices = async () => {
     const response = await fetch('http://localhost:3000/invoices');
     const receivedData = await response.json();
-
-    // console.log(data);
-    console.log(typeof receivedData);
     setInvData(receivedData.data);
   }
 

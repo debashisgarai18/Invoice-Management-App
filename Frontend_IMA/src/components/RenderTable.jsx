@@ -29,7 +29,7 @@ const RenderTable = ({ getinvoices }) => {
             ))}
           </div>
         </div>
-        <div className="flex w-full gap-[1rem] flex-col pr-[1rem] overflow-y-auto">
+        <div className="flex w-full gap-[1rem] flex-col pr-[1rem] overflow-y-auto pb-[1rem]">
           {getinvoices.map((val, idx) => (
             <div
               key={idx}
@@ -41,7 +41,7 @@ const RenderTable = ({ getinvoices }) => {
               </div>
               <div className="text-center w-[11%]">{val.cust_number}</div>
               <div className="text-center w-[11%]">
-                {val.invoice_id.slice(0, 8)}
+                {val.invoice_id}
               </div>
               <div className="text-right w-[11%]">
                 {parseInt(val.total_open_amount) > 1000
