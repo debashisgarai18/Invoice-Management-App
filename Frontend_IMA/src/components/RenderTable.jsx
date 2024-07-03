@@ -36,14 +36,14 @@ const RenderTable = ({getinvoices}) => {
               className="text-center text-lg text-white flex flex-row w-full gap-[10rem] "
             >
               <input type="checkbox" defaultChecked={false} />
-              <div className="text-center">{val.name_customer}</div>
-              <div className="text-center">{val.cust_number}</div>
-              <div className="text-center">{val.invoice_id}</div>
-              <div className="text-center">{val.total_open_amount}</div>
-              <div className="text-center">{val.due_in_date}</div>
-              <div className="text-center">{val.Predicted_payment_date}</div>
-              <div className="max-w-[200px] overflow-hidden whitespace-nowrap text-ellipsis text-center pl-[2rem]">
-                {val.notes}
+              <div className="text-center max-w-[11%] overflow-hidden whitespace-nowrap text-ellipsis">{val.name_customer}</div>
+              <div className="text-center max-w-[11%]">{val.cust_number}</div>
+              <div className="text-center max-w-[11%]">{val.invoice_id}</div>
+              <div className="text-center max-w-[11%]">{val.total_open_amount}</div>
+              <div className="text-center max-w-[11%]">{val.due_in_date}</div>
+              <div className="text-center max-w-[11%]">{val.Predicted_payment_date}</div>
+              <div className="max-w-[11%] overflow-hidden whitespace-nowrap text-ellipsis text-center pl-[2rem]">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum earum libero perferendis eligendi culpa quia, vel nemo sit quaerat, velit deserunt doloremque nesciunt?
               </div>
             </div>
           ))}

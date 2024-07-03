@@ -22,17 +22,18 @@ function App() {
   // function to get invoices from the database
   const getInvoices = async () => {
     const response = await fetch('http://localhost:3000/invoices');
-    const data = await response.json();
+    const receivedData = await response.json();
 
-    console.log(data)
-    // console.log(typeof data);
-    // setInvData(data);
+    // console.log(data);
+    console.log(typeof receivedData);
+    setInvData(receivedData.data);
   }
+
+  // this shouuld be rendered once when the App component loads
   useEffect(() => {
     getInvoices();
   },[])
 
-  // console.log(invData)
   return (
     <>
       <div className="bg-[#39495E] w-full h-screen relative">

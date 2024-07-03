@@ -12,7 +12,7 @@ const InvoiceTable = ({add, edit, invoices}) => {
   const handleEdit = () => {
     edit();
   }
-  console.log(invoices)
+
   return (
     <div className='w-[98%] h-fit m-auto'>
         <div className='text-4xl tracking-wide font-semibold pb-[1.75rem] text-white pl-[0.3rem]'>Dashboard</div>

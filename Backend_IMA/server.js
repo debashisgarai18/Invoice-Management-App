@@ -9,7 +9,7 @@ app.use(express.json());
 app.get('/invoices', async (req, res) => {
     const response = await imaModel.find();
     
-    console.log(response);
+    // console.log(response);
     if(response){
         res.status(200).json({
             data : response,
