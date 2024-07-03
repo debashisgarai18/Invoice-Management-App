@@ -11,8 +11,8 @@ fs.createReadStream("../../ML Modelling/predData.csv")
   .pipe(csvParser())
   .on("data", (data) => {
     if(countRecord < maxRecords){
-      const { name_customer, cust_number, invoice_id, total_open_amount, due_in_date, Predicted_payment_date } = data;
-      tempArr.push({ name_customer, cust_number, invoice_id, total_open_amount, due_in_date, Predicted_payment_date })
+      const { name_customer, cust_number, invoice_id, total_open_amount, due_in_date, Predicted_payment_date, Delay, delay_bucket } = data;
+      tempArr.push({ name_customer, cust_number, invoice_id, total_open_amount, due_in_date, Predicted_payment_date, Delay, delay_bucket })
       countRecord++;      
     }
   })

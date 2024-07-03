@@ -11,6 +11,8 @@ const imaSchema = new mongoose.Schema({
     total_open_amount : String,
     due_in_date : String,
     Predicted_payment_date : String,
+    Delay : String,
+    delay_bucket : String
 })
 
 const imaModel = mongoose.model('Invoices', imaSchema);
