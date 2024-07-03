@@ -30,9 +30,9 @@ const RenderTable = ({ getinvoices }) => {
           </div>
         </div>
         <div className="flex w-full gap-[1rem] flex-col pr-[1rem] overflow-y-auto pb-[1rem]">
-          {getinvoices.map((val, idx) => (
+          {getinvoices.map((val) => (
             <div
-              key={idx}
+              key={val._id}
               className="text-lg text-white flex flex-row w-full justify-between"
             >
               <input type="checkbox" defaultChecked={false} />

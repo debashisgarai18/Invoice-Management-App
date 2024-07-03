@@ -27,8 +27,11 @@ function App() {
   }
 
   // this shouuld be rendered once when the App component loads
+  // calling the API in 100ms time so that if we add something it gets rendered immediately!!
   useEffect(() => {
-    getInvoices();
+    setInterval(() => {
+      getInvoices();
+    },100);
   },[])
 
   return (
