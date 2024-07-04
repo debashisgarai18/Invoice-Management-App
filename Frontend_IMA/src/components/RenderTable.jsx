@@ -1,5 +1,6 @@
 import "./scrollbar.css";
 import PropTypes from "prop-types";
+import TableData from "./TableData";
 
 const headers = [
   "customer name",
@@ -31,38 +32,7 @@ const RenderTable = ({ getinvoices }) => {
         </div>
         <div className="flex w-full gap-[1rem] flex-col pr-[1rem] overflow-y-auto pb-[1rem]">
           {getinvoices.map((val) => (
-            <div
-              key={val._id}
-              className="text-lg text-white flex flex-row w-full justify-between"
-            >
-              <input type="checkbox" defaultChecked={false} />
-              <div className="w-[11%] text-left overflow-hidden whitespace-nowrap text-ellipsis">
-                {val.name_customer}
-              </div>
-              <div className="text-center w-[11%]">{val.cust_number}</div>
-              <div className="text-center w-[11%]">
-                {val.invoice_id}
-              </div>
-              <div className="text-right w-[11%]">
-                {parseInt(val.total_open_amount) > 1000
-                  ? String(parseInt(val.total_open_amount) / 1000) + "K"
-                  : val.total_open_amount}
-              </div>
-              <div className="text-center w-[11%]">{val.due_in_date}</div>
-              <div className="text-center w-[11%]">
-                {val.Predicted_payment_date}
-              </div>
-              <div className="text-center w-[11%]">
-                {parseInt(val.Delay) < 0
-                  ? val.Delay + " days"
-                  : parseInt(val.Delay) === 1
-                  ? val.Delay + " day"
-                  : val.Delay + " days"}
-              </div>
-              <div className="text-left w-[11%] overflow-hidden whitespace-nowrap text-ellipsis capitalize">
-                {val.delay_bucket}
-              </div>
-            </div>
+            <TableData val = {val} key = {val._id}/>
           ))}
         </div>
       </div>
@@ -71,6 +41,6 @@ const RenderTable = ({ getinvoices }) => {
 };
 
 RenderTable.propTypes = {
-  getinvoices: PropTypes.array.isRe,
+  getinvoices: PropTypes.array.isRequired,
 };
 export default RenderTable;
