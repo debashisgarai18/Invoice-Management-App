@@ -1,6 +1,7 @@
 import "./scrollbar.css";
 import PropTypes from "prop-types";
 import TableData from "./TableData";
+import { useState } from "react";
 
 
 const headers = [
@@ -24,7 +25,7 @@ const RenderTable = ({ getinvoices, getInvId}) => {
     <div className="w-full px-7">
       <div className="w-full h-[660px]  flex flex-col">
         <div className="border-b-2 border-b-[#283A46] w-full flex mb-[0.5rem]">
-          <div className="w-full flex pr-[1rem] justify-between">
+          <div className="w-full flex justify-between px-[0.75rem]">
             <input type="checkbox" />
             {headers.map((e, idx) => (
               <div
@@ -36,9 +37,9 @@ const RenderTable = ({ getinvoices, getInvId}) => {
             ))}
           </div>
         </div>
-        <div className="flex w-full gap-[1rem] flex-col pr-[1rem] overflow-y-auto pb-[1rem]">
-          {getinvoices.map((val) => (
-            <TableData val = {val} key = {val._id} setInvID = {setID}/>
+        <div className="flex w-full gap-[0.3rem] flex-col pr-[1rem] overflow-y-auto pb-[1rem]">
+          {getinvoices.map((val, idx) => (
+            <TableData val = {val} key = {val._id} setInvID = {setID} index = {idx}/>
           ))}
         </div>
       </div>

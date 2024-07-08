@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-const TableData = ({ val, setInvID }) => {
+const TableData = ({ val, setInvID, index}) => {
   const [isChecked, setIsChecked] = useState(false);
 
   // function to handle the checkboxes
@@ -11,7 +11,7 @@ const TableData = ({ val, setInvID }) => {
   };
 
   return (
-    <div className="text-lg text-white flex flex-row w-full justify-between">
+    <div className={`text-lg text-white flex flex-row w-full justify-between py-[0.75rem] px-[0.75rem] rounded-md ${index % 2 === 0 ? 'bg-transparent' : 'bg-[#283A46]'}`}>
       <input
         type="checkbox"
         defaultChecked={isChecked}
@@ -20,23 +20,23 @@ const TableData = ({ val, setInvID }) => {
       <div className="w-[11%] text-left overflow-hidden whitespace-nowrap text-ellipsis">
         {val.name_customer}
       </div>
-      <div className="text-center w-[11%]">{val.cust_number}</div>
-      <div className="text-center w-[11%]">{val.invoice_id}</div>
-      <div className="text-right w-[11%]">
+      <div className="text-center w-[10%]">{val.cust_number}</div>
+      <div className="text-center w-[10%]">{val.invoice_id}</div>
+      <div className="text-right w-[10%]">
         {parseInt(val.total_open_amount) > 1000
           ? String(parseInt(val.total_open_amount) / 1000) + "K"
           : val.total_open_amount}
       </div>
-      <div className="text-center w-[11%]">{val.due_in_date}</div>
-      <div className="text-center w-[11%]">{val.Predicted_payment_date}</div>
-      <div className="text-center w-[11%]">
+      <div className="text-center w-[10%]">{val.due_in_date}</div>
+      <div className="text-center w-[10%]">{val.Predicted_payment_date}</div>
+      <div className="text-center w-[10%]">
         {parseInt(val.Delay) < 0
           ? val.Delay + " days"
           : parseInt(val.Delay) === 1
           ? val.Delay + " day"
           : val.Delay + " days"}
       </div>
-      <div className="text-left w-[11%] overflow-hidden whitespace-nowrap text-ellipsis capitalize">
+      <div className="text-left w-[10%] overflow-hidden whitespace-nowrap text-ellipsis capitalize">
         {val.delay_bucket === "more than 100 days of delay" ? (
           <span className="text-[#ff2f2f] font-semibold underline">{val.delay_bucket}</span>
         ) : val.delay_bucket === "60 to 100 days of delay" ? (
