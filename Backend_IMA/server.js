@@ -69,6 +69,26 @@ app.put("/invoices/:id", async (req, res) => {
   }
 });
 
+app.delete("/invoices/:id", async (req, res) => {
+  const delId = req.params.id;
+
+  if (!delId) {
+    res.status(404).json({
+      message: "The ID to be deleted cannot be empty!!",
+    });
+  }
+  const response = await imaModel.findByIdAndDelete({ _id: delId });
+  if (response) {
+    res.status(200).json({
+      message: `The data with ${delId} is deleted successfully!!`,
+    });
+  } else {
+    res.status(404).json({
+      message: "There is some issue with the delete ID",
+    });
+  }
+});
+
 app.use((err, req, res, next) => {
   res.status(404).json({
     message: "Some error occured",
