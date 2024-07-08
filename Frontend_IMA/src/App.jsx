@@ -10,6 +10,7 @@ function App() {
   const [addState, setAddState] = useState(false);
   const [editState, setEditState] = useState(false);
   const [invData, setInvData] = useState([]);
+  const [invoiceID, setInvoiceID] = useState("");
 
   const addBtn = () => {
     setAddState(!addState);
@@ -34,13 +35,18 @@ function App() {
     },100);
   },[])
 
+  // function to get the invoice id from the invoice table (which is being checked)
+  // and push it to the edit menu
+  const getInvoiceId = (idx) => {
+    setInvoiceID(idx);
+  }
   return (
     <>
       <div className="bg-[#39495E] w-full h-screen relative">
         <Header />
-        <InvoiceTable add = {addBtn} edit = {editBtn} invoices={invData}/>
+        <InvoiceTable add = {addBtn} edit = {editBtn} invoices={invData} invId_from_invTable = {getInvoiceId}  editStatus = {editState}/>
         {addState && <AddMenu add = {addBtn}/>}
-        {editState && <EditMenu edit = {editBtn}/>}
+        {editState && <EditMenu edit = {editBtn} edit_invID = {invoiceID}/>}
       </div>
     </>
   );

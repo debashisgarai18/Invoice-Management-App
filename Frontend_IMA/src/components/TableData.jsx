@@ -1,12 +1,20 @@
 import PropTypes from "prop-types";
+import { useState } from 'react';
 
-const TableData = ({ val }) => {
-    console.log(val)
+const TableData = ({ val, setInvID}) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  // function to handle the checkboxes
+  const handleCheck = (idx) => {
+    setInvID(idx);
+    setIsChecked(!isChecked);
+  }
+
   return (
     <div
       className="text-lg text-white flex flex-row w-full justify-between"
     >
-      <input type="checkbox" defaultChecked={false} />
+      <input type="checkbox" defaultChecked={isChecked} onClick={() => handleCheck(val._id)} />
       <div className="w-[11%] text-left overflow-hidden whitespace-nowrap text-ellipsis">
         {val.name_customer}
       </div>
@@ -35,5 +43,6 @@ const TableData = ({ val }) => {
 
 TableData.propTypes = {
   val: PropTypes.object.isRequired,
+  setInvID : PropTypes.func.isRequired,
 };
 export default TableData;

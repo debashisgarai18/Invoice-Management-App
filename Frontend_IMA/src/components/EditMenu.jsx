@@ -2,7 +2,7 @@ import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import PropTypes from "prop-types";
 
-const EditMenu = ({ edit }) => {
+const EditMenu = ({ edit, edit_invID}) => {
   const [invAmnt, setInvAmnt] = useState("");
   const [notes, setNotes] = useState("");
 
@@ -10,6 +10,29 @@ const EditMenu = ({ edit }) => {
   const handleClose = () => {
     edit();
   };
+
+  // function to handle save
+  // it basically does a put Db call to the specific ID and 
+  // replaces the values with the inputted values
+  const handleSave = async () => {
+    if(!invAmnt){
+      alert("The input amount cannot be empty!!!");
+      return;
+    }
+    const data2bupdated = {
+      invAmnt : invAmnt
+    }
+    await fetch(`http://localhost:3000/invoices/${edit_invID}`,
+      {
+        method : 'PUT',
+        headers : {
+          'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(data2bupdated)
+      }
+    )
+    edit();
+  }
 
   const resetEntries = () => {
     setInvAmnt("");
@@ -37,7 +60,7 @@ const EditMenu = ({ edit }) => {
                 value={invAmnt}
                 onChange={(e) => setInvAmnt(e.target.value)}
               />
-            </div>
+            </div>  
             <div className="w-full h-[75%] flex gap-[0.3rem]">
               <div className="w-[40%] text-[#97A1A9] text-xl">Notes</div>
               <textarea
@@ -61,7 +84,8 @@ const EditMenu = ({ edit }) => {
               >
                 Reset
               </button>
-              <button className="text-xl border-[1px] hover:bg-[#14AFF1] focus:bg-[#97A1A9] focus:border-none  border-[#14AFF1] rounded-md text-white px-[0.75rem] py-[0.3rem]">
+              <button className="text-xl border-[1px] hover:bg-[#14AFF1] focus:bg-[#97A1A9] focus:border-none  border-[#14AFF1] rounded-md text-white px-[0.75rem] py-[0.3rem]"
+              onClick={handleSave}>
                 Save
               </button>
             </div>
@@ -74,6 +98,7 @@ const EditMenu = ({ edit }) => {
 
 EditMenu.propTypes = {
   edit: PropTypes.func.isRequired,
+  edit_invID : PropTypes.string.isRequired
 };
 
 export default EditMenu;

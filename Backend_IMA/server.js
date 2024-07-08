@@ -43,6 +43,32 @@ app.post("/invoices", async (req, res) => {
   }
 });
 
+app.put("/invoices/:id", async (req, res) => {
+  const updateId = req.params.id;
+  const updatedAmount = req.body.invAmnt;
+
+  if (updateId === "") {
+    res.status(404).json({
+      message: "The ID to be updated cannot be null!!",
+    });
+    return;
+  }
+
+  const response = await imaModel.findByIdAndUpdate(
+    { _id: updateId },
+    { total_open_amount: updatedAmount }
+  );
+  if (response) {
+    res.status(200).json({
+      message: "The data is updated successfully!!",
+    });
+  } else {
+    res.status(404).json({
+      message: "The is some issue with the given ID!!",
+    });
+  }
+});
+
 app.use((err, req, res, next) => {
   res.status(404).json({
     message: "Some error occured",

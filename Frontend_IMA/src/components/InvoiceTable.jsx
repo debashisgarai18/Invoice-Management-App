@@ -4,12 +4,20 @@ import { RiSubtractLine } from "react-icons/ri";
 import { IoSearchSharp } from "react-icons/io5";
 import RenderTable from "./RenderTable";
 import PropTypes from 'prop-types';
+import { useState } from "react";
 
-const InvoiceTable = ({add, edit, invoices}) => {
+const InvoiceTable = ({add, edit, invoices, invId_from_invTable}) => {
+  const [invID, setInvID] = useState("");
+
+  const getInvId = (idx) => {
+    setInvID(idx);
+  }
+
   const handleAdd = () => {
     add();
   }
   const handleEdit = () => {
+    invId_from_invTable(invID)
     edit();
   }
 
@@ -41,7 +49,7 @@ const InvoiceTable = ({add, edit, invoices}) => {
               </div>
             </div>
           </div>
-          <RenderTable getinvoices = {invoices}/>
+          <RenderTable getinvoices = {invoices} getInvId = {getInvId}/>
         </div>
     </div>
   )
@@ -51,6 +59,7 @@ const InvoiceTable = ({add, edit, invoices}) => {
 InvoiceTable.propTypes = {
   add : PropTypes.func.isRequired,
   edit : PropTypes.func.isRequired,
-  invoices : PropTypes.array.isRequired
+  invoices : PropTypes.array.isRequired,
+  invId_from_invTable : PropTypes.func.isRequired,
 };
 export default InvoiceTable
